@@ -17,11 +17,12 @@
   adminBtn.addEventListener("click", () => selectRole("admin"));
   orgBtn.addEventListener("click", () => selectRole("organization"));
 
-  document.getElementById("loginForm").addEventListener("submit", e => {
+  document.getElementById("loginForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    const ok = role === "admin"
-      ? username.value === "admin" && password.value === "admin123"
-      : username.value === "organization" && password.value === "org123";
+    const ok =
+      role === "admin"
+        ? username.value === "admin" && password.value === "admin123"
+        : username.value === "organization" && password.value === "org123";
     if (!ok) {
       error.textContent = "Invalid demo credentials.";
       error.classList.remove("hidden");
