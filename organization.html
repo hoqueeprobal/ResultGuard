@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Organization / Verifier Panel — ResultGuard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900">
+  <header class="border-b border-slate-200 bg-white">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <a href="index.html" class="text-2xl font-black">Result<span class="text-emerald-600">Guard</span></a>
+      <div class="flex items-center gap-4">
+        <span class="hidden text-sm font-semibold text-slate-500 sm:block">Organization / Verifier Panel</span>
+        <button id="logout" type="button" aria-label="Logout" class="group inline-flex items-center gap-2 rounded-xl bg-blue-700 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-800 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-600/20 active:translate-y-0">
+          <svg class="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <path d="m16 17 5-5-5-5"/>
+            <path d="M21 12H9"/>
+          </svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+    <div class="mb-5"><p class="text-sm font-bold text-emerald-700">ORGANIZATION / VERIFIER PANEL</p><h1 class="mt-1 text-2xl font-black">Verify Result Authenticity</h1></div>
+
+    <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 class="flex items-center gap-2 text-lg font-black text-emerald-700"><i data-lucide="shield-check" class="mr-2 inline-block h-5 w-5 align-[-4px]"></i>Verify Result</h2>
+      <p class="mt-1 text-sm text-slate-500">Upload the result and signature files to verify authenticity.</p>
+      <div class="mt-5 grid gap-5 lg:grid-cols-2">
+        <label class="block text-sm font-bold">Upload Result File <span class="font-normal text-slate-400">(.txt)</span>
+          <div id="resultDrop" class="mt-2 cursor-pointer rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 p-8 text-center hover:bg-emerald-50">
+            <input id="resultFile" type="file" accept=".txt,text/plain" class="hidden">
+            <div class="text-4xl"><i data-lucide="file-text" class="mx-auto h-10 w-10 text-emerald-600"></i></div><p id="resultFileName" class="mt-3 font-bold text-slate-700">Choose result file</p><p id="resultFileStatus" class="mt-1 text-xs text-slate-500">Click to upload</p>
+          </div>
+        </label>
+        <label class="block text-sm font-bold">Upload Signature File <span class="font-normal text-slate-400">(.sig)</span>
+          <div id="signatureDrop" class="mt-2 cursor-pointer rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 p-8 text-center hover:bg-emerald-50">
+            <input id="signatureFile" type="file" accept=".sig,.txt" class="hidden">
+            <div class="text-4xl"><i data-lucide="signature" class="mx-auto h-10 w-10 text-emerald-600"></i></div><p id="signatureFileName" class="mt-3 font-bold text-slate-700">Choose signature file</p><p id="signatureFileStatus" class="mt-1 text-xs text-slate-500">Click to upload</p>
+          </div>
+        </label>
+      </div>
+      <button id="verify" class="mt-5 w-full rounded-xl bg-emerald-700 py-4 font-black text-white hover:bg-emerald-800"><i data-lucide="shield-check" class="mr-2 inline-block h-5 w-5 align-[-4px]"></i>Verify Result</button>
+    </section>
+
+    <section id="verificationSection" class="mt-5 hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 class="flex items-center gap-2 text-lg font-black text-emerald-700">
+        <i data-lucide="shield-check" class="h-5 w-5"></i>
+        Verification Result
+      </h2>
+
+      <div id="verificationCard" class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50/50 p-6">
+        <div class="flex items-center gap-3 text-emerald-700">
+          <i data-lucide="circle-check" class="h-7 w-7"></i>
+          <div>
+            <p id="verificationTitle" class="font-black tracking-wide">SIGNATURE VALID</p>
+            <p id="verificationLines" class="font-black tracking-wide">INTEGRITY VERIFIED</p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-xl border border-emerald-200 bg-white p-5 text-center">
+          <p class="text-xs font-bold uppercase tracking-widest text-emerald-600">Result Status</p>
+          <p id="verificationStatus" class="mt-1 text-2xl font-black text-emerald-700">AUTHENTIC</p>
+        </div>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">University</p>
+            <p id="verifiedUniversity" class="mt-1 font-bold text-slate-900">Dhaka International University</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Student ID</p>
+            <p id="verifiedStudentId" class="mt-1 font-bold text-slate-900">2025001</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Student Name</p>
+            <p id="verifiedStudentName" class="mt-1 font-bold text-slate-900">Rahim Ahmed</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Department</p>
+            <p id="verifiedDepartment" class="mt-1 font-bold text-slate-900">CSE</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Overall CGPA</p>
+            <p id="verifiedCgpa" class="mt-1 font-bold text-slate-900">3.83</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Grade</p>
+            <p id="verifiedGrade" class="mt-1 font-bold text-slate-900">A+</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">Result</p>
+            <p id="verifiedResult" class="mt-1 font-black text-emerald-700">PASS</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="meaning" class="mt-4 rounded-xl border border-blue-100 bg-blue-50 p-5 text-sm text-blue-900"></div>
+    </section>
+  </main>
+  <script src="js/auth.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/organization.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
