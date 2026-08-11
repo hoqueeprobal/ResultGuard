@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ResultGuard — Secure Academic Result Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              rgBlue: "#1456D8",
+              rgGreen: "#087A3B",
+              rgInk: "#0B1220",
+            },
+            boxShadow: {
+              soft: "0 12px 35px rgba(15,23,42,.08)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white">
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
+      >
+        <a href="index.html" class="flex items-center gap-3">
+          <div
+            class="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-blue-700"
+          >
+            <svg
+              width="23"
+              height="23"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 3 5 6v5c0 4.5 3 7.5 7 10 4-2.5 7-5.5 7-10V6l-7-3Z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </div>
+          <span class="text-2xl font-extrabold tracking-tight"
+            >Result<span class="text-emerald-600">Guard</span></span
+          >
+        </a>
+        <a
+          href="login.html"
+          class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-800"
+          >Login</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section
+        class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2"
+      >
+        <div>
+          <div
+            class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700"
+          >
+            <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+            RSA-PSS • SHA-256 • Digital Signatures
+          </div>
+          <h1
+            class="max-w-3xl text-5xl font-black leading-tight tracking-tight sm:text-6xl"
+          >
+            Verify academic results with
+            <span class="text-blue-700">cryptographic trust.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+            ResultGuard protects academic results through digital signatures,
+            enabling organizations to verify results and detect unauthorized
+            changes
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href="login.html"
+              class="rounded-xl bg-blue-700 px-6 py-3.5 font-bold text-white shadow-lg shadow-blue-700/20 hover:bg-blue-800"
+              >Open ResultGuard</a
+            >
+            <a
+              href="organization.html"
+              class="rounded-xl border border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-700 hover:bg-slate-50"
+              >Verify a Result</a
+            >
+          </div>
+          <div class="mt-8 flex flex-wrap gap-5 text-sm text-slate-500">
+            <span>✓ RSA-2048</span><span>✓ RSA-PSS</span><span>✓ SHA-256</span
+            ><span>✓ Web Crypto API</span>
+          </div>
+        </div>
+
+        <div
+          class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft"
+        >
+          <img
+            src="assets/resultguard-hero.png"
+            alt="Result Authentication and Verification illustration"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </section>
+
+      <section class="border-y border-slate-200 bg-white">
+        <div class="mx-auto grid max-w-7xl gap-5 px-6 py-14 md:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 p-6">
+            <div class="text-3xl font-black text-blue-700">RSA-2048</div>
+            <p class="mt-2 text-sm text-slate-500">
+              Public-key cryptography for signing and verification.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 p-6">
+            <div class="text-3xl font-black text-blue-700">SHA-256</div>
+            <p class="mt-2 text-sm text-slate-500">
+              Cryptographic hashing for result integrity.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 p-6">
+            <div class="text-3xl font-black text-emerald-700">
+              Tamper Detection
+            </div>
+            <p class="mt-2 text-sm text-slate-500">
+              Any change to the signed result causes verification to fail.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="mx-auto max-w-7xl px-6 py-8 text-center text-sm text-slate-500"
+    >
+      © 2026 ResultGuard • All Rights Reserved
+    </footer>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
