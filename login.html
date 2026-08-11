@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login — ResultGuard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-50">
+  <div class="grid min-h-screen lg:grid-cols-2">
+    <section class="hidden bg-gradient-to-br from-blue-800 to-blue-600 p-12 text-white lg:flex lg:flex-col lg:items-center lg:justify-center lg:text-center">
+      <div class="flex max-w-2xl flex-col items-center">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-blue-200">Secure Academic Verification</p>
+        <h1 class="mt-4 text-5xl font-black leading-tight">Result Generation &amp; Verification</h1>
+        <p class="mt-5 max-w-xl text-blue-100">A browser-based RSA digital-signature system for secure academic result generation, signing, verification, and tamper detection.</p>
+      </div>
+    </section>
+
+    <section class="flex items-center justify-center p-6">
+      <div class="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/60">
+        <div class="mb-8">
+          <a href="index.html" class="block text-center text-2xl font-black">Result<span class="text-emerald-600">Guard</span></a>
+          <h2 class="mt-8 text-3xl font-black">Sign in</h2>
+          <p class="mt-2 text-slate-500">Choose a role and enter the demo credentials.</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1">
+          <button id="adminRole" class="role-btn rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-blue-700 shadow-sm">Admin</button>
+          <button id="orgRole" class="role-btn rounded-lg px-4 py-2.5 text-sm font-bold text-slate-500">Organization</button>
+        </div>
+
+        <form id="loginForm" class="mt-6 space-y-5" autocomplete="off">
+          <div>
+            <label class="mb-2 block text-sm font-bold">Username</label>
+            <input id="username" name="rg_username" autocomplete="off" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10" >
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-bold">Password</label>
+            <input id="password" name="rg_password" type="password" autocomplete="new-password" required class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-600/10" >
+          </div>
+          <button class="w-full rounded-xl bg-blue-700 px-5 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-700/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-800 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-600/20 active:translate-y-0">Login</button>
+          <p id="error" class="hidden rounded-xl bg-red-50 p-3 text-sm font-semibold text-red-700"></p>
+        </form>
+
+        <div class="mt-6 rounded-xl bg-slate-50 p-4 text-xs text-slate-500">
+          <p class="font-bold text-slate-700">Demo credentials</p>
+          <p class="mt-1">Admin: <b>admin</b> / <b>admin123</b></p>
+          <p>Organization: <b>organization</b> / <b>org123</b></p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="js/login.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
